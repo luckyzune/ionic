@@ -8,8 +8,8 @@ script:
       cd builder && docker build -t luckyzune/ionic:builder .
       docker push luckyzune/ionic:builder
       
-      docker tag luckyzune/ionic:builder luckyzune/ionic:9.1.23-builder
-      docker push luckyzune/ionic:9.1.23-builder
+      docker tag luckyzune/ionic:builder luckyzune/ionic:9.1.24-builder
+      docker push luckyzune/ionic:9.1.24-builder
     )
 after_script:
   - docker images
