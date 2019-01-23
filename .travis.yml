@@ -8,7 +8,7 @@ script:
       cd builder && docker build -t luckyzune/ionic:latest .
       docker push luckyzune/ionic:latest
       
-      docker tag luckyzune/ionic:builder luckyzune/ionic:9.1.24-builder
+      docker tag luckyzune/ionic:latest luckyzune/ionic:9.1.24-builder
       docker push luckyzune/ionic:9.1.24-builder
     )
 after_script:
