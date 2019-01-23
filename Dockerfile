@@ -1,7 +1,7 @@
 FROM node:10
 
 # See https://crbug.com/795759
-RUN apt-get update && apt-get install -yq libgconf-2-4 bzip2 build-essential
+RUN apt-get update && apt-get install -yq libgconf-2-4 bzip2 build-essential --no-install-recommends apt-utils
 RUN apt-get install -yq git
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
     && apt-get purge --auto-remove -y curl \
     && rm -rf /src/*.deb
 
+# set up taobao register
+RUN npm config set registry https://registry.npm.taobao.org
+
 # install npm
 RUN npm install -g npm@6.4.1
 
@@ -26,7 +29,6 @@ RUN npm install -g node-static
 # create app directory
 RUN mkdir /app
 WORKDIR /app
-
 
 # # Install app dependencies, using wildcard if package-lock exists
 # COPY package.json /app

@@ -1,0 +1,15 @@
+language: bash
+services: docker
+
+script: 
+  - |
+    (
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      cd builder && docker build -t luckyzune/ionic:builder .
+      docker push luckyzune/ionic:builder
+      
+      docker tag luckyzune/ionic:builder luckyzune/ionic:9.1.23-builder
+      docker push luckyzune/ionic:9.1.23-builder
+    )
+after_script:
+  - docker images

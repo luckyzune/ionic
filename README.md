@@ -1,4 +1,4 @@
-## 在每个ionic项目里加上以下代码
+## 在每个ionic项目Dockerfile里加上以下代码
 
 ```
 # Install app dependencies, using wildcard if package-lock exists
