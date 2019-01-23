@@ -5,8 +5,8 @@ script:
   - |
     (
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      cd builder && docker build -t luckyzune/ionic:builder .
-      docker push luckyzune/ionic:builder
+      cd builder && docker build -t luckyzune/ionic:latest .
+      docker push luckyzune/ionic:latest
       
       docker tag luckyzune/ionic:builder luckyzune/ionic:9.1.24-builder
       docker push luckyzune/ionic:9.1.24-builder
