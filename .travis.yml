@@ -5,11 +5,13 @@ script:
   - |
     (
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      cd builder && docker build -t luckyzune/ionic:latest . && cd ..
-      docker push luckyzune/ionic:latest
+
+      ## disable ionic builder if no changed
+      # cd builder && docker build -t luckyzune/ionic:latest . && cd ..
+      # docker push luckyzune/ionic:latest
       
-      docker tag luckyzune/ionic:latest luckyzune/ionic:9.1.24-builder
-      docker push luckyzune/ionic:9.1.24-builder
+      # docker tag luckyzune/ionic:latest luckyzune/ionic:9.1.24-builder
+      # docker push luckyzune/ionic:9.1.24-builder
 
       cd android && docker build -t luckyzune/ionic:android . && cd ..
       docker push luckyzune/ionic:android

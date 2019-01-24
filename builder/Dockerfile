@@ -17,9 +17,6 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
     && apt-get purge --auto-remove -y curl \
     && rm -rf /src/*.deb
 
-# set up taobao register
-RUN npm config set registry https://registry.npm.taobao.org
-
 # install npm
 RUN npm install -g npm@6.4.1
 
@@ -29,6 +26,9 @@ RUN npm install -g node-static
 # create app directory
 RUN mkdir /app
 WORKDIR /app
+
+# set up taobao register if it will be used in China PRC 
+RUN npm config set registry https://registry.npm.taobao.org
 
 # # Install app dependencies, using wildcard if package-lock exists
 # COPY package.json /app
