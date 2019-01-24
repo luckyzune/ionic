@@ -19,8 +19,8 @@ npm install -g npm@"$NPM_VERSION" && \
 npm install -g cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION" && \
 npm cache clear --force && \
 gem install sass && \
-git config --global user.email "you@example.com" && \
-git config --global user.name "Your Name" && \
+git config --global user.email "mq@luckyzune.com" && \
+git config --global user.name "Qi Ma" && \
 ionic start myApp sidemenu --no-interactive
 #ANDROID
 #JAVA
@@ -47,21 +47,21 @@ tar xzf android-sdk.tgz && \
 rm -f android-sdk.tgz && \
 chown -R root. /opt
 
-# Install Gradle
-RUN wget https://services.gradle.org/distributions/gradle-"$GRADLE_VERSION"-bin.zip && \
-mkdir /opt/gradle && \
-unzip -d /opt/gradle gradle-"$GRADLE_VERSION"-bin.zip && \
-rm -rf gradle-"$GRADLE_VERSION"-bin.zip
+# # Install Gradle
+# RUN wget https://services.gradle.org/distributions/gradle-"$GRADLE_VERSION"-bin.zip && \
+# mkdir /opt/gradle && \
+# unzip -d /opt/gradle gradle-"$GRADLE_VERSION"-bin.zip && \
+# rm -rf gradle-"$GRADLE_VERSION"-bin.zip
 
-# Setup environment
+# # Setup environment
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/tools:/opt/gradle/gradle-"$GRADLE_VERSION"/bin
+# ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:/opt/tools:/opt/gradle/gradle-"$GRADLE_VERSION"/bin
 
-# Install sdk elements
-COPY tools /opt/tools
+# # Install sdk elements
+# COPY tools /opt/tools
 
-RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter platform-tools,tools,build-tools-26.0.2,android-27,android-26,build-tools-25.0.0,android-25,extra-android-support,extra-android-m2repository,extra-google-m2repository"]
-RUN unzip ${ANDROID_HOME}/temp/*.zip -d ${ANDROID_HOME}
+# RUN ["/opt/tools/android-accept-licenses.sh", "android update sdk --all --no-ui --filter platform-tools,tools,build-tools-26.0.2,android-27,android-26,build-tools-25.0.0,android-25,extra-android-support,extra-android-m2repository,extra-google-m2repository"]
+# RUN unzip ${ANDROID_HOME}/temp/*.zip -d ${ANDROID_HOME}
 
 # Test First Build so that it will be faster later
 RUN cd myApp && \
