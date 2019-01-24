@@ -24,7 +24,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 RUN npm install -g npm@6.4.1
 
 # install static webserver
-RUN npm install -g node-static node-sass
+RUN npm install -g node-static
 
 # create app directory
 RUN mkdir /app
