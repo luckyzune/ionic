@@ -6,14 +6,15 @@ script:
     (
       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+      cd android && docker build -t luckyzune/ionic:android . && cd ..
+      docker push luckyzune/ionic:android
+
       cd builder && docker build -t luckyzune/ionic:latest . && cd ..
       docker push luckyzune/ionic:latest
       
       docker tag luckyzune/ionic:latest luckyzune/ionic:9.1.25-builder
       docker push luckyzune/ionic:9.1.25-builder
 
-      cd android && docker build -t luckyzune/ionic:android . && cd ..
-      docker push luckyzune/ionic:android
 
     )
 after_script:
